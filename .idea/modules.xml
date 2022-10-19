@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Job-searching.iml" filepath="$PROJECT_DIR$/.idea/Job-searching.iml" />
+      <module fileurl="file://$PROJECT_DIR$/job_hunter/job_hunter.iml" filepath="$PROJECT_DIR$/job_hunter/job_hunter.iml" />
     </modules>
   </component>
 </project>
