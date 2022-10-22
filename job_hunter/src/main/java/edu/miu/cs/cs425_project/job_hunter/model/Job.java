@@ -22,4 +22,7 @@ public class Job {
     private LocalDate postDate;
     private LocalDate expirationDate;
     private String description;
+    @ManyToOne()
+    @JoinColumn
+    private  Employer employer;
 }

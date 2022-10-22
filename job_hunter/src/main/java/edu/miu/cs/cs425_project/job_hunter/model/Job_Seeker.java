@@ -21,4 +21,7 @@ public class Job_Seeker {
     private String firstName;
     private String lastName;
     private  Character gender;
+    @OneToOne
+    @JoinColumn(name="address_id")
+    private Address address;
 }

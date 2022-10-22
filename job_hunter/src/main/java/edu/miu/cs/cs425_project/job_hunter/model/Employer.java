@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -18,6 +19,13 @@ public class Employer {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long employer_id;
     private String companyName;
-
+    @OneToOne
+    @JoinColumn(name="address_id")
+    private Address address;
+    /**
+     * change to unidirectional  Fix Me
+     */
+    @OneToMany(mappedBy = "employer")
+    private List<Job> jobList;
 
 }
