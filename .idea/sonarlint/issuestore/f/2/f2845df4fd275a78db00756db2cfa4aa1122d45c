@@ -1,0 +1,7 @@
+
+l	java:S116"RRename this field "user_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿€¥·úÿÿÿÿ
+c
+java:S1128
+"ARemove this unused import 'javax.validation.constraints.NotNull'.(áç¥ãüÿÿÿÿ8 µÎ—¿0
+R
+java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èýÿÿÿÿ8¡µÎ—¿0
