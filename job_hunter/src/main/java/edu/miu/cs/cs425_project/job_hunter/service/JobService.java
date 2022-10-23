@@ -14,4 +14,6 @@ public interface JobService {
     JobDTO updateJob(Long jobId, Job job);
     void deleteJobById(Long jobId);
 
+    //List<Job> searchByAnything(String searchBy);
+
 }

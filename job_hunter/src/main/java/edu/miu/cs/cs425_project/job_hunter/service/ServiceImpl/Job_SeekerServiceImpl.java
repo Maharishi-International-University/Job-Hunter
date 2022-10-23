@@ -1,5 +1,6 @@
 package edu.miu.cs.cs425_project.job_hunter.service.ServiceImpl;
 
+import edu.miu.cs.cs425_project.job_hunter.model.Job;
 import edu.miu.cs.cs425_project.job_hunter.model.Job_Seeker;
 import edu.miu.cs.cs425_project.job_hunter.repository.Job_Repository;
 import edu.miu.cs.cs425_project.job_hunter.repository.Job_Seeker_Repository;
@@ -13,6 +14,7 @@ import java.util.List;
 public class Job_SeekerServiceImpl implements Job_SeekerService {
 
     private Job_Seeker_Repository jobSeekerRepo;
+    private Job_Repository job_repository;
 
     @Override
     public List<Job_Seeker> getAllJobSeekers() {
@@ -42,5 +44,21 @@ public class Job_SeekerServiceImpl implements Job_SeekerService {
     @Override
     public void deleteById(Long job_seekerId) {
         jobSeekerRepo.deleteById(job_seekerId);
+    }
+
+//    @Override
+//    public List<Job> searchJob(String searchJob) {
+//        return null;
+//    }
+
+    @Override
+    public List<Job> searchJob(String searchJob, String searchJob1) {
+
+        return job_repository.findAllByDescriptionContainsOrTitleContains(searchJob, searchJob1);
+
+//        var allJobs= job_repository.findAll();
+//         List<Job> availableJob = new ArrayList<>();
+
+
     }
 }
