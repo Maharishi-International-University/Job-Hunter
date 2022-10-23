@@ -75,4 +75,9 @@ public class JobServiceImpl implements JobService {
     public void deleteJobById(Long jobId) {
         jobRepository.deleteById(jobId);
     }
+
+//    @Override
+//    public List<Job> searchByAnything(String searchBy) {
+//        return jobRepository.findAllByTitleAndDescriptionAndJob_idAndPostDate(searchBy);
+
 }

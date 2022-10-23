@@ -46,4 +46,5 @@ public class JobController {
         jobService.deleteJobById(jobId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }
