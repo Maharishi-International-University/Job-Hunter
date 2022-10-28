@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping(value = { "/jobhunter"})
+@RequestMapping(value = { "/jobHunter"})
 public class JobController {
 
     @Autowired
     private JobService jobService;
 
-    @GetMapping(value = {"/listjobs"})
+    @GetMapping(value = {"/list/jobs"})
     public ResponseEntity<List<JobDTO>> getAllJobs() {
         var allJobs = jobService.getAllJobs();
         return ResponseEntity.ok(allJobs);

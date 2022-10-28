@@ -10,11 +10,6 @@ import java.util.List;
 @Repository
 public interface Job_Repository extends JpaRepository<Job,Long> {
 
-    //Job findJobByDescriptionAndPostDate(String description, LocalDate date);
-
-
-
-
     List<Job> findAllByDescriptionContainsOrTitleContains(String searchBy, String searchBy1);
 
 }

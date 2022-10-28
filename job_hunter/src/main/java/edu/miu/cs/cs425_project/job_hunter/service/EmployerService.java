@@ -6,6 +6,7 @@ import edu.miu.cs.cs425_project.job_hunter.model.Employer;
 import java.util.List;
 
 public interface EmployerService {
+
     List<Employer> getAllEmployers();
     Employer getEmployerBy_Id(Long employer_Id);
     Employer addNewEmployer(Employer employer);
