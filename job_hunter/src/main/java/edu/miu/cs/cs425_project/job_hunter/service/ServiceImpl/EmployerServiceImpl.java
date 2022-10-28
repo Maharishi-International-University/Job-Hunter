@@ -3,8 +3,10 @@ package edu.miu.cs.cs425_project.job_hunter.service.ServiceImpl;
 import edu.miu.cs.cs425_project.job_hunter.model.Employer;
 import edu.miu.cs.cs425_project.job_hunter.repository.Employer_Repository;
 import edu.miu.cs.cs425_project.job_hunter.service.EmployerService;
+import edu.miu.cs.cs425_project.job_hunter.service.JobService;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 public class EmployerServiceImpl implements EmployerService {
     private Employer_Repository employerRepo;
+    @Autowired
+    private JobService jobService;
     @Override
     public List<Employer> getAllEmployers() {
         return employerRepo.findAll();
