@@ -1,9 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AllJobs, JobContext } from "./JobDetails";
 import axios from "axios";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import {GolbalContext} from './Dashboard';
 
 function Edit({route}) {
+  const [newJobSate, setNewJob] = React.useState({
+    title: "",
+    postDate: "",
+    expirationDate: "",
+    description: "",
+    website: "",
+  });
+  const {jobState, setJobState,updateState,deleteJobonClick} = useContext(GolbalContext)
+
   // const initialState ={
   //     title:
   //     postDate:
@@ -13,16 +23,23 @@ function Edit({route}) {
 
   // }
   const{id}=useParams();
+
+  //console.log(id, "the upadets id");
+
+  const propagateState = (id)=>{
+    const updateData = jobState.filter((job)=> job.job_id == id)[0];
+    console.log(jobState[0].job_id, id, "the update state....");
+    setNewJob(updateData)
+  }
+   
+
+  useEffect(()=>{
+    propagateState(id)
+  }, [])
   // const navigate = useNavigate();
   //const params = { id, updateState };
 
-  const [newJobSate, setNewJob] = React.useState({
-    title: "",
-    postDate: "",
-    expirationDate: "",
-    description: "",
-    website: "",
-  });
+  
   //console.log(newJobSate, "the single value..");
 
   // const job = useContext(AllJobs)
@@ -42,14 +59,17 @@ function Edit({route}) {
   };
 
   const addOnClickHandler = () => {
-    console.log(newJobSate, "the new state.......");
-    saveUserApi(newJobSate);
-    navigation("/");
+    //console.log(newJobSate, "the new state.......");
+    // saveUserApi(newJobSate);
+    updateState(Number(id), newJobSate)
+    navigation("/job_details");
   };
   return (
     <>
       <br></br>
+      {newJobSate ? <>
       <div class="container">
+  
         <div class="row">
           <div class="col-lg-6 col-md-6 container justify-content-center card">
             <h2  style={{'font-size':'40px'}} class="text-center">Update Form</h2>
@@ -105,7 +125,7 @@ function Edit({route}) {
                 ></input>
               </div>
 
-              {/* <div>
+              <div>
                 <label>Website </label>
 
                 <input
@@ -116,7 +136,7 @@ function Edit({route}) {
                   name="website"
                   onChange={onchangeHandler}
                 ></input>
-              </div> */}
+              </div>
 
               <br></br>
 
@@ -131,6 +151,7 @@ function Edit({route}) {
           </div>
         </div>
       </div>
+      </> : null }
     </>
   );
 }

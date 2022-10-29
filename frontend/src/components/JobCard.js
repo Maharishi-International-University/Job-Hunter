@@ -1,12 +1,13 @@
 
 import React, { useContext, useState }  from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { AllJobs } from './JobDetails';
+import { GolbalContext } from './Dashboard';
+// import { AllJobs } from './JobDetails';
 import { JobContext } from './JobDetails';
 
 export default function JobCard(props) {
     
-    const { deleteJobonClick }  = useContext(AllJobs)
+    const { deleteJobonClick }  = useContext(GolbalContext)
 
     const navigation = useNavigate();
 

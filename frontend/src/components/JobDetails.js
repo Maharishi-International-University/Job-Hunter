@@ -1,95 +1,44 @@
-
-import React, { useState, useEffect } from "react"
+import React, { useContext } from "react";
 import JobCard from "./JobCard";
-import { Navigate, useNavigate } from "react-router-dom";
-import axios from "axios";
+import {useNavigate } from "react-router-dom";
 
+import { GolbalContext } from "./Dashboard";
 
 export const AllJobs = React.createContext();
-export const JobContext = React.createContext();
-
-export default function JobDetails(props) {
-
-  const [jobState, setJobState] = useState([])
 
 
-  useEffect(() => {
-    getAllJobs();
-  }, [])
-  
-const updateState=(id,newObj)=>{
-const newList = jobState.map(job=>{
-  if(job.id==id){
-    return newObj
+export default function JobDetails() {
+  const { jobState } = useContext(GolbalContext);
 
-  }
-    return job
-  
-})
+  const navigation = useNavigate();
 
-setJobState(newList)
-}
-  const getAllJobs = async () => {
-    const response = await fetch('http://localhost:8080/jobHunter/list/jobs')
-      .then((response) => response.json());
-
-    setJobState(response);
+  const addHandler = () => {
+    navigation("/add_job");
   };
 
-  const navigation = useNavigate()
-
-  const addHandler =()=> {
-    navigation("/add_job");
-  }
-
-
-
-  //delete
-  const deleteJobonClick = async (id) => {
-   // const response = await axios.delete(`http://localhost:8080/jobHunter/delete/${id}`)
-  const response = await fetch(`http://localhost:8080/jobHunter/delete/${id}`,
-  {
-    method: "DELETE",
-    headers: {
-      Accept: "application/json",
-      "Content-type": "application/json",
-    }
-  })
-   //console.log(id, "Id of the delete");
-   const result =  response.json();
-   //for the fornt end
-   if(result){
-    const filterdJobs = jobState.filter((job) => job.job_id !== id)
-    setJobState(filterdJobs);
-   }
-  }
-
-
   return (
+    <div className="container">
+      <br></br>
 
-    
-      <AllJobs.Provider value={{ jobState, deleteJobonClick }}> 
-      <div className="container">
+      <button
+        style={{ "font-size": "22px", "margin-left": "" }}
+        onClick={addHandler}
+        className="btn btn-primary"
+      >
+        Add Job
+      </button>
       <br></br>
-      
-      <button style={{'font-size':'22px','margin-left': ''}} onClick={addHandler}
-       className="btn btn-primary">Add Job</button>
-      <br></br>
-        {
-          jobState.map((job) => (
-            <JobCard key={job.job_id}
-             id={job.job_id}
-              title={job.title}
-              postDate={job.postDate}
-              expirationDate={job.expirationDate}
-              description={job.description}
-              website={job.website}
-              updateState={updateState}
-            />
-          ))
-        }
-        </div>
-     </AllJobs.Provider>
-    
-  )
+      {jobState.map((job) => (
+        <JobCard
+          key={job.job_id}
+          id={job.job_id}
+          title={job.title}
+          postDate={job.postDate}
+          expirationDate={job.expirationDate}
+          description={job.description}
+          website={job.website}
+        />
+      ))}
+    </div>
+  );
 }
