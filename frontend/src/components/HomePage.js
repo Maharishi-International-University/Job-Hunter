@@ -1,4 +1,5 @@
 import React from "react";
+import SearchBar from "./SearchBar";
 
 const HomePage = () => {
   return (
@@ -7,8 +8,9 @@ const HomePage = () => {
         <br></br>
         <br></br>
       <div class="container">
+      <SearchBar />
         
-            <form class="d-flex" action="/patient/search" method="get">
+            {/* <form class="d-flex" action="/patient/search" method="get">
               <input
                 class="form-control me-sm-2"
                 type="text"
@@ -19,7 +21,7 @@ const HomePage = () => {
               <button class="btn btn-primary my-2 my-sm-0" type="submit">
                 Search
               </button>
-            </form>
+            </form> */}
           </div>
         </div>
     
