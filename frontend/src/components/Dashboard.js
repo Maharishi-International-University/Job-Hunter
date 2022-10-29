@@ -10,6 +10,7 @@ import { AboutUs } from './AboutUs'
 import SignUp from './SignUp'
 import RegisterSucess from './RegisterSucess'
 import SignIn from './SignIn'
+import HomePage from './HomePage'
 
 
 
@@ -20,7 +21,8 @@ export default function Dashboard() {
         <>
             <Header />
             <Routes>
-                <Route path="/" element={<JobDetails/>}></Route>
+                <Route path='/' element={<HomePage></HomePage>}></Route>
+                <Route path="/job_details" element={<JobDetails/>}></Route>
                 <Route path='/add_job' element={<AddJob/>}></Route>
                 <Route  path='/edit/:id' element={<Edit/>}></Route>  
                 <Route  path='/about_us' element={<AboutUs/>}></Route>  

@@ -18,6 +18,11 @@ function Header() {
                         </Link>
                     </li>
                     <li class="nav-item active">
+                        <Link style={{'font-size':'26px' ,'color':'black'}} class="nav-link" to={"/job_details"}>All Jobs
+                            <span class="visually-hidden">(current)</span>
+                        </Link>
+                    </li>
+                    <li class="nav-item active">
                     <Link style={{'font-size':'26px' ,'color':'black'}} class="nav-link" to={"/about_us"}>AboutUs
                             <span class="visually-hidden">(current)</span>
                         </Link>
@@ -30,12 +35,7 @@ function Header() {
                     </li>
 
                 </ul>
-                <form class="d-flex" action="/patient/search" method="get" >
-
-                                        <input class="form-control me-sm-2" type="text" placeholder="Search"
-                                               name="search" id="search" />
-                                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>
+               
             </div>
         </div>
     </nav>
