@@ -12,5 +12,6 @@ public class JobDTO {
     private LocalDate postDate;
     private LocalDate expirationDate;
     private String description;
+    private String website;
 
 }

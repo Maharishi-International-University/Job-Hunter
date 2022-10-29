@@ -7,13 +7,13 @@ import edu.miu.cs.cs425_project.job_hunter.model.Job_Seeker;
 import java.util.List;
 
 public interface JobService {
-
-    List<JobDTO> getAllJobs();
-    JobDTO getJobBy_Id(Long jobId);
-    JobDTO addNewJob(Job job);
-    JobDTO updateJob(Long jobId, Job job);
+    List<Job> getAllJobs();
+    Job getJobBy_Id(Long jobId);
+    Job addNewJob(Job job);
+    Job updateJob(Long jobId, Job job);
     void deleteJobById(Long jobId);
 
-    //List<Job> searchByAnything(String searchBy);
+    List<Job> searchByAnyTitle(String searchBy);
+
 
 }

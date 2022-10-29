@@ -1,0 +1,7 @@
+
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âÁÜøÿÿÿÿ8çÆ£ñ¿0
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€À8ëÆ£ñ¿0
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê¤–·úÿÿÿÿ8ëÆ£ñ¿0
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âÁÜøÿÿÿÿ8ğÆ£ñ¿0
+s
+java:S1128"QRemove this unused import 'edu.miu.cs.cs425_project.job_hunter.model.Job_Seeker'.(à÷„„üÿÿÿÿ8òÆ£ñ¿0

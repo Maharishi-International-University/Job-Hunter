@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'CaskaydiaCove NF'
+}
+body{
+  background-color: ivory;
+}
+header#main-header > section,  header#main-header > nav, main {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+section#main-branding {
+  background-color: aquamarine;
+  width: 100vw;
+  min-height: 5em;
+}
+header#main-header > nav {
+  background-color: beige;
+  height: 2em;
+  line-height: 2em;
+  font-size: 1.5em;
+}
+body main {
+  margin-top: 1em;
+}
+body footer {
+  background-color: #cdcdcd;
+  position: fixed;
+  bottom: 0;
   display: flex;
-  flex-direction: column;
+  width: 100vw;
+  height: 4em;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+body footer section {
+  width: 50vw;
+  margin: 0 1em 0em 1em;
+}
+body footer section#right-section {
+  display: flex;
+  justify-content: flex-end;
+  width: 50vw;
+}
+.ctn{
+  border: solid;
+  margin: 20px;
+  padding: 20;
+}
+span.errorMessage {
+  color: red;
+
+}
+/* #2fa4e7 */
+h1{
+ color:white; 
+}
+td a {
+
+  color: black;
+  text-align: center;
+  float: left;
+  padding: 3px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+td a.active {
+  background-color: #4CAF50;
   color: white;
+  border: 2px solid #4CAF50;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+td a:hover:not(.active) {background-color: yellowgreen;}

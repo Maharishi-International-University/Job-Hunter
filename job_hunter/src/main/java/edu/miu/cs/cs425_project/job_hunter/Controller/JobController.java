@@ -22,22 +22,22 @@ public class JobController {
     private JobService jobService;
 
     @GetMapping(value = {"/list/jobs"})
-    public ResponseEntity<List<JobDTO>> getAllJobs() {
+    public ResponseEntity<List<Job>> getAllJobs() {
         var allJobs = jobService.getAllJobs();
         return ResponseEntity.ok(allJobs);
     }
 
     @GetMapping(path = {"/get/{jobId}"})
-    public ResponseEntity<JobDTO> getJobById(@PathVariable Long jobId) {
+    public ResponseEntity<Job> getJobById(@PathVariable Long jobId) {
         return ResponseEntity.ok(jobService.getJobBy_Id(jobId));
     }
 
     @PostMapping(value = {"/addnewjob"})
-    public ResponseEntity<JobDTO> addNewJob(@Valid @RequestBody Job job){
+    public ResponseEntity<Job> addNewJob(@Valid @RequestBody Job job){
         return ResponseEntity.ok(jobService.addNewJob(job));
     }
     @PutMapping(path = {"/update/{jobId}"})
-    public ResponseEntity<JobDTO> updateJob(@PathVariable Long jobId, @RequestBody Job job){
+    public ResponseEntity<Job> updateJob(@PathVariable Long jobId, @RequestBody Job job){
         return ResponseEntity.ok(jobService.updateJob(jobId,job));
     }
 
@@ -47,4 +47,8 @@ public class JobController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping(path = {"/search/{name}"})
+    public ResponseEntity<List<Job>> findAllByTitle(@PathVariable("name") String name){
+        return ResponseEntity.ok(jobService.searchByAnyTitle(name));
+    }
 }

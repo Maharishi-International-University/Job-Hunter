@@ -23,35 +23,30 @@ public class JobServiceImpl implements JobService {
     private ModelMapper modelMapper;
 
     @Override
-    public List<JobDTO> getAllJobs() {
-        var allJobs = jobRepository.findAll(Sort.by(Sort.Direction.ASC, "title"));
-        var jobDtos = new ArrayList<JobDTO>();
-
-        allJobs.stream()
-                .map(job -> jobDtos.add(modelMapper.map(job, JobDTO.class))).collect(Collectors.toList());
-        return jobDtos;
+    public List<Job> getAllJobs() {
+        return  jobRepository.findAll(Sort.by(Sort.Direction.ASC, "title"));
     }
 
     @Override
-    public JobDTO getJobBy_Id(Long jobId) {
-        var job = jobRepository.findById(jobId);
-        return modelMapper.map(job, JobDTO.class);
+    public Job getJobBy_Id(Long jobId) {
+
+        return jobRepository.findById(jobId).get();
     }
 
     @Override
-    public JobDTO addNewJob(Job job) {
-        var job1 = jobRepository.save(job);
-        return modelMapper.map(job1, JobDTO.class);
+    public Job addNewJob(Job job) {
+
+        return jobRepository.save(job);
     }
 
     @Override
-    public JobDTO updateJob(Long jobId, Job job) {
+    public Job updateJob(Long jobId, Job job) {
 
         var updatedJob = jobRepository.findById(jobId);
         Job job1 = null;
-        
+
         if (updatedJob.isPresent()) {
-           job1 =  updatedJob.stream()
+            job1 =  updatedJob.stream()
                     .map(newjob -> {
                         newjob.setJob_id(job.getJob_id());
                         newjob.setTitle(job.getTitle());
@@ -68,12 +63,22 @@ public class JobServiceImpl implements JobService {
         } else {
             throw new IllegalStateException("There is something wrong with the id Number");
         }
-        return modelMapper.map(job1, JobDTO.class);
+        return job1;
     }
 
     @Override
     public void deleteJobById(Long jobId) {
         jobRepository.deleteById(jobId);
+    }
+
+    @Override
+    public List<Job> searchByAnyTitle(String searchBy) {
+
+        var allJobs = jobRepository.findAll();
+        return allJobs.stream()
+                .filter(jobs -> jobs.getTitle().contains(searchBy))
+                .collect(Collectors.toList());
+        //return jobRepository.findAllByTitleContains(searchBy);
     }
 
 //    @Override

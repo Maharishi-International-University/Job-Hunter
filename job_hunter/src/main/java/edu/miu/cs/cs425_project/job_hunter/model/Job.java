@@ -25,6 +25,7 @@ public class Job {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate expirationDate;
     private String description;
+    private String website;
     @ManyToOne()
     @JoinColumn
     private  Employer employer;

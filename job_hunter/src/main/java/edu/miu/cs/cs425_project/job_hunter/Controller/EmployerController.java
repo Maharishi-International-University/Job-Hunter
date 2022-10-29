@@ -16,6 +16,7 @@ import java.util.List;
 @RequestMapping("/employer")
 public class EmployerController {
 
+
     @Autowired
     private EmployerService employerService;
     @Autowired
@@ -27,12 +28,12 @@ public class EmployerController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping("/get/{jobId}")
-    public ResponseEntity<JobDTO> getJobById(@PathVariable Long jobId){
+    public ResponseEntity<Job> getJobById(@PathVariable Long jobId){
         return ResponseEntity.ok(jobService.getJobBy_Id(jobId));
     }
 
     @PutMapping("/update/{jobId}")
-    public ResponseEntity<JobDTO> updateJob(@PathVariable("jobId") Long jobId, @RequestBody Job job) {
+    public ResponseEntity<Job> updateJob(@PathVariable("jobId") Long jobId, @RequestBody Job job) {
         return ResponseEntity.ok(jobService.updateJob(jobId, job));
     }
 
@@ -43,7 +44,7 @@ public class EmployerController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<JobDTO>> getAllJobs() {
+    public ResponseEntity<List<Job>> getAllJobs() {
         return ResponseEntity.ok(jobService.getAllJobs());
     }
 }
